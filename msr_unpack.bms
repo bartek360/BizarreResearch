@@ -1,0 +1,12 @@
+idstring "Pak\x1b"
+savepos OFFSET
+get SIZE long
+
+get NAME basename
+get EXT extension
+string NAME p "%s_unpacked.%s" NAME EXT
+comtype bizarre
+	get ZSIZE asize
+	math ZSIZE - OFFSET
+	Clog NAME OFFSET ZSIZE SIZE
+	

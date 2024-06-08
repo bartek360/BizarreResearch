@@ -1,0 +1,23 @@
+idstring "GOTH"
+get SIGN long
+get SIZE long
+get FLAG long
+get DUMMY long
+get DUMMY long
+savepos OFFSET
+
+get NAME basename
+get EXT extension
+string NAME p "%s_unpacked.%s" NAME EXT
+
+if FLAG & 1
+	log MEMORY_FILE2 0 0
+	putvarchr MEMORY_FILE2 SIZE 0
+	get ZSIZE asize
+	math ZSIZE - OFFSET
+	log MEMORY_FILE OFFSET ZSIZE
+	calldll "default.xbe" 0xB6C90 cdecl RET MEMORY_FILE2 MEMORY_FILE SIZE
+	log NAME 0 SIZE MEMORY_FILE2
+else
+	log NAME OFFSET SIZE
+endif
