@@ -3,7 +3,6 @@ get SIGN long
 get SIZE long
 get FLAG long
 get DUMMY long
-get DUMMY long
 savepos OFFSET
 
 get NAME basename
